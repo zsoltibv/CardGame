@@ -1,25 +1,75 @@
-﻿using System;
+﻿using CardGame.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
+using System.Windows.Media.Animation;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace CardGame.Controllers
 {
     internal class GameController
     {
-        public List<List<string>> StringItems { get; set; }
-        public GameController() { 
-            
-            StringItems = new List<List<string>>();
-            for(int i =0; i < 4; i++)
+        private const string _imagePathFormat = "../Assets/CardPics/100-animal-flashcards-PACK-1-{0}.png";
+        public ObservableCollection<List<ButtonItem>> ImageItems { get; set; }
+        private int NrOfRows { get; set; } = 4;
+        private int NrOfCols { get; set; } = 4;
+
+        public GameController() {
+            ImageItems = new ObservableCollection<List<ButtonItem>>();
+            Random rand = new Random();
+
+            for (int i =0; i < NrOfRows; i++)
             {
-                List<string> item = new List<string>();
-                for(int j = 0; j<3; j++)
+                List<ButtonItem> image = new List<ButtonItem>();
+                for (int j = 0; j < NrOfCols / 2; j++)
                 {
-                    item.Add("Str" + i + j);
+                    int number = rand.Next(1, 100);
+                    image.Add(new ButtonItem {
+                        ImageSource =  string.Format(_imagePathFormat, number.ToString("D3"))
+                    });
+                    image.Add(new ButtonItem
+                    {
+                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3"))
+                    });
                 }
-                StringItems.Add(item);
+                ImageItems.Add(image);
+            }
+            ShuffleGrid();
+        }
+
+        public void ShuffleGrid()
+        {
+            //Fisher - Yates shuffle algorithm
+            List<ButtonItem> flatArr = new List<ButtonItem>();
+
+            for (int i = 0; i < NrOfRows; i++)
+            {
+                for (int j = 0; j < NrOfCols; j++)
+                {
+                    flatArr.Add(ImageItems[i][j]);
+                }
+            }
+
+            Random rand = new Random();
+            for (int i = NrOfRows * NrOfCols - 1; i > 0; i--)
+            {
+                int j = rand.Next(0, i + 1);
+                ButtonItem temp = flatArr[i];
+                flatArr[i] = flatArr[j];
+                flatArr[j] = temp;
+            }
+
+            for (int i = 0; i < NrOfRows; i++)
+            {
+                for (int j = 0; j < NrOfCols; j++)
+                {
+                    ImageItems[i][j] = flatArr[i * NrOfRows + j];
+                }
             }
         }
     }

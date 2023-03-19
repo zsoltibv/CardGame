@@ -12,8 +12,8 @@ namespace CardGame.Controllers
 {
     internal class UserController
     {
-        private const string _usersFilePath = "../../users.json";
-        private const string _imagePathFormat = "../Images/ProfilePics/pic-{0}.png";
+        private const string _usersFilePath = "../../Data/users.json";
+        private const string _imagePathFormat = "../Assets/ProfilePics/pic-{0}.png";
         public ObservableCollection<User> AllUsers { get; set; }
 
         public UserController()

@@ -15,7 +15,7 @@ namespace CardGame.Views
     public partial class SignIn : Window
     {
         private UserController _userController;
-        private int _selectedListIndex;
+        private int _selectedUserId = -1;
 
         public SignIn()
         {
@@ -38,38 +38,41 @@ namespace CardGame.Views
 
         private void RemoveUser(object sender, RoutedEventArgs e)
         {
-            _userController.RemoveUser(_selectedListIndex);
+            _userController.RemoveUser(_selectedUserId);
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListView listView = (ListView)sender;
-            _selectedListIndex = listView.SelectedIndex;
+            _selectedUserId = listView.SelectedIndex;
 
-            profilePic.Source = new BitmapImage(new Uri(_userController.GetCurrentImage(_selectedListIndex),
+            profilePic.Source = new BitmapImage(new Uri(_userController.GetCurrentImage(_selectedUserId),
                 UriKind.Relative));
         }
 
         private void NextImage(object sender, RoutedEventArgs e)
         {
-            profilePic.Source = new BitmapImage(new Uri(_userController.GetNextImage(_selectedListIndex), 
+            profilePic.Source = new BitmapImage(new Uri(_userController.GetNextImage(_selectedUserId), 
                 UriKind.Relative));
         }
 
         private void PreviousImage(object sender, RoutedEventArgs e)
         {
-            profilePic.Source = new BitmapImage(new Uri(_userController.GetPreviousImage(_selectedListIndex),
+            profilePic.Source = new BitmapImage(new Uri(_userController.GetPreviousImage(_selectedUserId),
                UriKind.Relative));
         }
 
         private void PlayGame(object sender, RoutedEventArgs e)
         {
-            AddUser addUser = new AddUser();
-            bool? result = addUser.ShowDialog();
-
-            if (result == true)
+            if(_selectedUserId != -1)
             {
-                _userController.AddUser(new User(addUser.GetUserName()));
+                this.Hide();
+                GameOptions options = new GameOptions(_selectedUserId);
+                options.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a user in order to play.");
             }
         }
 

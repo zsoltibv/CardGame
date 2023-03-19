@@ -62,3 +62,5 @@ D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\AddUser.g.cs
 D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\AddUser.baml
 D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\Game.g.cs
 D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\Game.baml
+D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\GameOptions.g.cs
+D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\GameOptions.baml

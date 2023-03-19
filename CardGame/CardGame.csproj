@@ -93,9 +93,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\ButtonItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Views\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameOptions.xaml.cs">
+      <DependentUpon>GameOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
@@ -114,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,16 +158,125 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="users.json" />
+    <None Include="Data\users.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\ProfilePics\pic-1.png" />
-    <Resource Include="Images\ProfilePics\pic-2.png" />
-    <Resource Include="Images\ProfilePics\pic-3.png" />
-    <Resource Include="Images\ProfilePics\pic-4.png" />
-    <Resource Include="Images\ProfilePics\pic-5.png" />
-    <Resource Include="Images\ProfilePics\pic-6.png" />
+    <Resource Include="Assets\ProfilePics\pic-1.png" />
+    <Resource Include="Assets\ProfilePics\pic-2.png" />
+    <Resource Include="Assets\ProfilePics\pic-3.png" />
+    <Resource Include="Assets\ProfilePics\pic-4.png" />
+    <Resource Include="Assets\ProfilePics\pic-5.png" />
+    <Resource Include="Assets\ProfilePics\pic-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-001.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-002.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-003.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-004.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-005.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-006.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-007.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-008.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-009.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-010.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-011.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-012.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-013.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-014.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-015.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-016.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-017.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-018.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-019.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-020.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-021.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-022.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-023.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-024.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-025.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-026.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-027.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-028.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-029.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-030.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-031.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-032.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-033.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-034.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-035.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-036.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-037.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-038.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-039.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-040.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-041.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-042.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-043.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-044.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-045.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-046.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-047.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-048.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-049.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-050.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-051.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-052.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-053.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-054.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-055.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-056.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-057.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-058.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-059.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-060.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-061.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-062.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-063.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-064.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-065.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-066.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-067.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-068.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-069.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-070.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-071.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-072.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-073.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-074.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-075.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-076.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-077.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-078.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-079.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-080.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-081.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-082.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-083.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-084.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-085.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-086.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-087.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-088.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-089.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-090.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-091.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-092.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-093.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-094.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-095.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-096.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-097.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-098.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-099.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-100.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-101.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-102.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-103.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-104.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-105.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-106.png" />
+    <Resource Include="Assets\CardPics\100-animal-flashcards-PACK-1-107.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

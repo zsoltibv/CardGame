@@ -1,4 +1,4 @@
-﻿<Window x:Class="CardGame.MainWindow"
+﻿<Window x:Class="CardGame.Views.Game"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,8 +9,8 @@
     <Window.DataContext>
         <local:GameController/>
     </Window.DataContext>
-    <Grid>
-        <ItemsControl ItemsSource="{Binding StringItems}">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ItemsControl ItemsSource="{Binding ImageItems}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">
@@ -21,10 +21,13 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding}"
-                                        Width="60"
-                                        Height="60"
-                                        Margin="10"/>
+                                <Button Width="60"
+                                Height="85"
+                                Margin="5">
+                                    <StackPanel>
+                                        <Image Source="{Binding ImageSource}" Width="60" Height="85"/>
+                                    </StackPanel>
+                                </Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

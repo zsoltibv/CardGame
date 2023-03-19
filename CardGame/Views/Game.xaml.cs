@@ -13,15 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CardGame
+namespace CardGame.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Game.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Game : Window
     {
-        public MainWindow()
+        private int _userId;
+
+        public Game(int id)
         {
+            _userId = id;
             InitializeComponent();
         }
     }
