@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGame.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,15 @@ namespace CardGame.Views
         {
             _userId = id;
             InitializeComponent();
+        }
+
+        private void ButtonClick(object sender, RoutedEventArgs e)
+        {
+            var buttonItem = (ButtonItem)((Button)sender).DataContext;
+            int row = buttonItem.Row;
+            int col = buttonItem.Column;
+            // Do something with row and col
+            Console.WriteLine("row: " + row.ToString() + ", col: " + col.ToString());
         }
     }
 }

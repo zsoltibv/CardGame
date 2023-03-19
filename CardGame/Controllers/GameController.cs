@@ -15,29 +15,35 @@ namespace CardGame.Controllers
     internal class GameController
     {
         private const string _imagePathFormat = "../Assets/CardPics/100-animal-flashcards-PACK-1-{0}.png";
-        public ObservableCollection<List<ButtonItem>> ImageItems { get; set; }
+        public ObservableCollection<List<ButtonItem>> ButtonItems { get; set; }
         private int NrOfRows { get; set; } = 4;
         private int NrOfCols { get; set; } = 4;
 
-        public GameController() {
-            ImageItems = new ObservableCollection<List<ButtonItem>>();
+        public GameController()
+        {
+            ButtonItems = new ObservableCollection<List<ButtonItem>>();
             Random rand = new Random();
 
-            for (int i =0; i < NrOfRows; i++)
+            for (int i = 0; i < NrOfRows; i++)
             {
-                List<ButtonItem> image = new List<ButtonItem>();
+                List<ButtonItem> button = new List<ButtonItem>();
                 for (int j = 0; j < NrOfCols / 2; j++)
                 {
                     int number = rand.Next(1, 100);
-                    image.Add(new ButtonItem {
-                        ImageSource =  string.Format(_imagePathFormat, number.ToString("D3"))
-                    });
-                    image.Add(new ButtonItem
+                    button.Add(new ButtonItem
                     {
-                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3"))
+                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Row = i,
+                        Column = j * 2,
+                    });
+                    button.Add(new ButtonItem
+                    {
+                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Row = i,
+                        Column = j * 2 + 1,
                     });
                 }
-                ImageItems.Add(image);
+                ButtonItems.Add(button);
             }
             ShuffleGrid();
         }
@@ -51,7 +57,7 @@ namespace CardGame.Controllers
             {
                 for (int j = 0; j < NrOfCols; j++)
                 {
-                    flatArr.Add(ImageItems[i][j]);
+                    flatArr.Add(ButtonItems[i][j]);
                 }
             }
 
@@ -59,16 +65,16 @@ namespace CardGame.Controllers
             for (int i = NrOfRows * NrOfCols - 1; i > 0; i--)
             {
                 int j = rand.Next(0, i + 1);
-                ButtonItem temp = flatArr[i];
+                ButtonItem temp = new ButtonItem(flatArr[i]);
                 flatArr[i] = flatArr[j];
-                flatArr[j] = temp;
+                flatArr[j] = new ButtonItem(temp);
             }
 
             for (int i = 0; i < NrOfRows; i++)
             {
                 for (int j = 0; j < NrOfCols; j++)
                 {
-                    ImageItems[i][j] = flatArr[i * NrOfRows + j];
+                    ButtonItems[i][j] = new ButtonItem(flatArr[i * NrOfRows + j], i, j);
                 }
             }
         }

@@ -10,7 +10,7 @@
         <local:GameController/>
     </Window.DataContext>
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ItemsControl ItemsSource="{Binding ImageItems}">
+        <ItemsControl ItemsSource="{Binding ButtonItems}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">
@@ -23,7 +23,8 @@
                             <DataTemplate>
                                 <Button Width="60"
                                 Height="85"
-                                Margin="5">
+                                Margin="5"
+                                Click="ButtonClick">
                                     <StackPanel>
                                         <Image Source="{Binding ImageSource}" Width="60" Height="85"/>
                                     </StackPanel>
