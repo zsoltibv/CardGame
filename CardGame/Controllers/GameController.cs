@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CardGame
+namespace CardGame.Controllers
 {
-    internal class Data
+    internal class GameController
     {
         public List<List<string>> StringItems { get; set; }
-        public Data() { 
+        public GameController() { 
             
             StringItems = new List<List<string>>();
             for(int i =0; i < 4; i++)

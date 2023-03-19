@@ -12,9 +12,9 @@
             <ColumnDefinition Width="57*"/>
             <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Add User" HorizontalAlignment="Left" Margin="48,88,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Name="UserName" Margin="48,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <Label Content="Add User:" HorizontalAlignment="Left" Margin="46,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.812,0.274"/>
+        <Button Content="Add User" HorizontalAlignment="Left" Margin="91,126,0,0" VerticalAlignment="Top" Click="Button_Click" Width="120" RenderTransformOrigin="0.178,-0.434"/>
+        <TextBox HorizontalAlignment="Left" Name="UserName" Margin="91,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2"/>
+        <Label Content="Add User:" HorizontalAlignment="Left" Margin="89,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.812,0.274"/>
 
     </Grid>
 </Window>

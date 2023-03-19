@@ -11,7 +11,7 @@
     </Window.DataContext>
     <Grid>
         <Label Content="Memory Card Game" HorizontalAlignment="Center" Margin="0,33,0,0" VerticalAlignment="Top" Width="145"/>
-        <ListView ItemsSource="{Binding AllUsers}" Margin="56,82,321,159">
+        <ListView ItemsSource="{Binding AllUsers}" Margin="56,82,321,159" SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -21,9 +21,11 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Content="New User" HorizontalAlignment="Left" Margin="56,307,0,0" VerticalAlignment="Top" Click="AddUser" Width="69"/>
-        <Button Content="Delete User" HorizontalAlignment="Left" Margin="144,307,0,0" VerticalAlignment="Top" Click="RemoveUser"/>
-        <Button Content="Play" HorizontalAlignment="Left" Margin="229,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.099,-0.387" Width="61"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="318,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.099,-0.387" Width="61" Click="Button_Click_2"/>
-        <Image HorizontalAlignment="Left" Height="197" Margin="445,82,0,0" VerticalAlignment="Top" Width="206"/>
+        <Button Content="Delete User" HorizontalAlignment="Left" Margin="130,307,0,0" VerticalAlignment="Top" Click="RemoveUser" Width="74"/>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="209,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.099,-0.387" Width="77" Click="PlayGame"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="291,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.099,-0.387" Width="71" Click="Cancel"/>
+        <Image HorizontalAlignment="Left" x:Name="profilePic" Height="197" Margin="445,82,0,0" VerticalAlignment="Top" Width="206"/>
+        <Button Content="&gt;&gt;" HorizontalAlignment="Left" Margin="546,307,0,0" VerticalAlignment="Top" Width="96" Click="NextImage"/>
+        <Button Content="&lt;&lt;" HorizontalAlignment="Left" Margin="445,307,0,0" VerticalAlignment="Top" Click="PreviousImage" Width="96"/>
     </Grid>
 </Window>

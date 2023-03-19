@@ -1,7 +1,7 @@
 ﻿CardGame
 
 
-winexe
+exe
 C#
 .cs
 D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\
@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\App.xaml
-31344731667
+3-1363506304
 
-10-596669970
+10-17127786
 26612086550
-MainWindow.xaml;Views\AddUser.xaml;Views\SignIn.xaml;
+Views\Game.xaml;Views\AddUser.xaml;Views\SignIn.xaml;
 
 False
 

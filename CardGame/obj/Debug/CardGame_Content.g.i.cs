@@ -8,6 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("users.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-1.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-3.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-4.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-5.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pic-6.png")]
 
 
