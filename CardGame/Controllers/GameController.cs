@@ -88,10 +88,13 @@ namespace CardGame.Controllers
 
         public async void FlipItem(int row, int col, ItemsControl gameGrid)
         {
-            ButtonItems[row][col].Visibility = "Visible";
-            gameGrid.Items.Refresh();
+            if (_flippedCount < 2)
+            {
+                ButtonItems[row][col].Visibility = "Visible";
+                gameGrid.Items.Refresh();
 
-            FlippedButtons.Add(ButtonItems[row][col]);
+                FlippedButtons.Add(ButtonItems[row][col]);
+            }
             _flippedCount++;
 
             if (_flippedCount == 2)
