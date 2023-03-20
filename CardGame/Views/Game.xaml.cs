@@ -39,10 +39,13 @@ namespace CardGame.Views
             var buttonItem = (ButtonItem)((Button)sender).DataContext;
             int row = buttonItem.Row;
             int col = buttonItem.Column;
-
             _gameController.FlipItem(row, col, gameGrid);
 
-            //gameGrid.Items.Refresh();
+            if (_gameController.CheckWin())
+            {
+                MessageBox.Show("You won.");
+                return;
+            }
         }
     }
 }

@@ -99,7 +99,7 @@ namespace CardGame.Controllers
 
             if (_flippedCount == 2)
             {
-                await Task.Delay(800);
+                await Task.Delay(500);
 
                 if (FlippedButtons[0].ImageSource == FlippedButtons[1].ImageSource)
                 {
@@ -116,6 +116,19 @@ namespace CardGame.Controllers
                 FlippedButtons.Clear();
                 _flippedCount = 0;
             }
+        }
+
+        public bool CheckWin()
+        {
+            for(int i = 0; i < NrOfRows; i++)
+            {
+                for(int j = 0; j< NrOfCols; j++)
+                {
+                    if (ButtonItems[i][j].Visibility == "Hidden")
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
