@@ -4,16 +4,16 @@
 exe
 C#
 .cs
-D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\
 CardGame
 none
 false
 DEBUG;TRACE
-D:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\App.xaml
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\App.xaml
 41965104144
 
 121558529095
-26612086550
+26564786710
 Views\Game.xaml;Views\AddUser.xaml;Views\GameOptions.xaml;Views\SignIn.xaml;
 
 False

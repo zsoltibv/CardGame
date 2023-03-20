@@ -6,7 +6,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
@@ -33,12 +35,14 @@ namespace CardGame.Controllers
                     button.Add(new ButtonItem
                     {
                         ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Visibility = "Visible",
                         Row = i,
                         Column = j * 2,
                     });
                     button.Add(new ButtonItem
                     {
                         ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Visibility = "Visible",
                         Row = i,
                         Column = j * 2 + 1,
                     });
@@ -77,6 +81,11 @@ namespace CardGame.Controllers
                     ButtonItems[i][j] = new ButtonItem(flatArr[i * NrOfRows + j], i, j);
                 }
             }
+        }
+
+        public void RemoveItem(int row, int col)
+        {
+            ButtonItems[row][col].Visibility= "Hidden";
         }
     }
 }

@@ -9,6 +9,7 @@ namespace CardGame.Models
     public class ButtonItem
     {
         public string ImageSource { get; set; }
+        public string Visibility { get; set; }
         public int Row { get;set; }
         public int Column { get; set; }
 
@@ -17,6 +18,7 @@ namespace CardGame.Models
         public ButtonItem(ButtonItem buttonItem)
         {
             ImageSource = buttonItem.ImageSource;
+            Visibility = buttonItem.Visibility;
             Row = buttonItem.Row;
             Column = buttonItem.Column;
         }
@@ -24,6 +26,7 @@ namespace CardGame.Models
         public ButtonItem(ButtonItem buttonItem, int row, int column)
         {
             ImageSource = buttonItem.ImageSource;
+            Visibility = buttonItem.Visibility;
             Row = row;
             Column = column;
         }

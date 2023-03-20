@@ -1,4 +1,5 @@
-﻿using CardGame.Models;
+﻿using CardGame.Controllers;
+using CardGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,15 @@ namespace CardGame.Views
     public partial class Game : Window
     {
         private int _userId;
+        private GameController _gameController;
 
         public Game(int id)
         {
             _userId = id;
             InitializeComponent();
+
+            _gameController = new GameController();
+            DataContext = _gameController;
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
@@ -34,8 +39,9 @@ namespace CardGame.Views
             var buttonItem = (ButtonItem)((Button)sender).DataContext;
             int row = buttonItem.Row;
             int col = buttonItem.Column;
-            // Do something with row and col
-            Console.WriteLine("row: " + row.ToString() + ", col: " + col.ToString());
+
+            _gameController.RemoveItem(row, col);
+            grid.Items.Refresh();
         }
     }
 }
