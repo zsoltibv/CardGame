@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
@@ -20,10 +21,14 @@ namespace CardGame.Controllers
         public ObservableCollection<List<ButtonItem>> ButtonItems { get; set; }
         private int NrOfRows { get; set; } = 4;
         private int NrOfCols { get; set; } = 4;
+        List<ButtonItem> FlippedButtons { get; set; }
+
+        private int _flippedCount = 0;
 
         public GameController()
         {
             ButtonItems = new ObservableCollection<List<ButtonItem>>();
+            FlippedButtons = new List<ButtonItem> { };
             Random rand = new Random();
 
             for (int i = 0; i < NrOfRows; i++)
@@ -35,14 +40,12 @@ namespace CardGame.Controllers
                     button.Add(new ButtonItem
                     {
                         ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Visibility = "Visible",
                         Row = i,
                         Column = j * 2,
                     });
                     button.Add(new ButtonItem
                     {
                         ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Visibility = "Visible",
                         Row = i,
                         Column = j * 2 + 1,
                     });
@@ -83,9 +86,33 @@ namespace CardGame.Controllers
             }
         }
 
-        public void RemoveItem(int row, int col)
+        public async void FlipItem(int row, int col, ItemsControl gameGrid)
         {
-            ButtonItems[row][col].Visibility= "Hidden";
+            ButtonItems[row][col].Visibility = "Visible";
+            gameGrid.Items.Refresh();
+
+            FlippedButtons.Add(ButtonItems[row][col]);
+            _flippedCount++;
+
+            if (_flippedCount == 2)
+            {
+                await Task.Delay(800);
+
+                if (FlippedButtons[0].ImageSource == FlippedButtons[1].ImageSource)
+                {
+                    FlippedButtons[0].Visibility = "Visible";
+                    FlippedButtons[1].Visibility = "Visible";
+                    gameGrid.Items.Refresh();
+                }
+                else
+                {
+                    FlippedButtons[0].Visibility = "Hidden";
+                    FlippedButtons[1].Visibility = "Hidden";
+                    gameGrid.Items.Refresh();
+                }
+                FlippedButtons.Clear();
+                _flippedCount = 0;
+            }
         }
     }
 }

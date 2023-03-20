@@ -40,8 +40,9 @@ namespace CardGame.Views
             int row = buttonItem.Row;
             int col = buttonItem.Column;
 
-            _gameController.RemoveItem(row, col);
-            grid.Items.Refresh();
+            _gameController.FlipItem(row, col, gameGrid);
+
+            //gameGrid.Items.Refresh();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CardGame.Models
     public class ButtonItem
     {
         public string ImageSource { get; set; }
-        public string Visibility { get; set; }
+        public string Visibility { get; set; } = "Hidden";
         public int Row { get;set; }
         public int Column { get; set; }
 

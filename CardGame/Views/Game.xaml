@@ -10,7 +10,7 @@
         <local:GameController/>
     </Window.DataContext>
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ItemsControl ItemsSource="{Binding ButtonItems}" x:Name="grid">
+        <ItemsControl ItemsSource="{Binding ButtonItems}" x:Name="gameGrid">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">
