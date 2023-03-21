@@ -122,7 +122,7 @@ namespace CardGame.Controllers
                 List<ButtonItem> button = new List<ButtonItem>();
                 for (int j = 0; j < NrOfCols; j++)
                 {
-                    if (j % 2 == 0)
+                    if ((i * NrOfCols + j) % 2 == 0)
                     {
                         number = rand.Next(1, 107);
                         button.Add(new ButtonItem
