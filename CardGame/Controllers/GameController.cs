@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -114,19 +116,20 @@ namespace CardGame.Controllers
             ButtonItems.Clear();
 
             Random rand = new Random();
+            int number = 0;
             for (int i = 0; i < NrOfRows; i++)
             {
                 List<ButtonItem> button = new List<ButtonItem>();
                 for (int j = 0; j < NrOfCols; j++)
                 {
-                    int number = rand.Next(1, 107);
                     if (j % 2 == 0)
                     {
+                        number = rand.Next(1, 107);
                         button.Add(new ButtonItem
                         {
                             ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
                             Row = i,
-                            Column = j * 2,
+                            Column = j,
                         });
                     }
                     else
@@ -135,12 +138,31 @@ namespace CardGame.Controllers
                         {
                             ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
                             Row = i,
-                            Column = j * 2 + 1,
+                            Column = j,
                         });
                     }
                 }
                 ButtonItems.Add(button);
             }
+        }
+
+        public void SaveGame(int userId)
+        {
+            string saveFile = "../../Data/GameSaves/user" + userId.ToString() + ".json";
+            SaveToFile(saveFile);
+        }
+
+        public void SaveToFile(string file)
+        {
+            string json = JsonSerializer.Serialize(ButtonItems);
+            File.WriteAllText(file, json);
+        }
+
+        public void LoadSavedGame(int userId)
+        {
+            string saveFile = "../../Data/GameSaves/user" + userId.ToString() + ".json";
+            string jsonString = File.ReadAllText(saveFile);
+            ButtonItems = JsonSerializer.Deserialize<ObservableCollection<List<ButtonItem>>>(jsonString);
         }
     }
 }

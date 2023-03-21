@@ -75,7 +75,7 @@ namespace CardGame.Views
 
         private void SaveGame(object sender, RoutedEventArgs e)
         {
-
+            _gameController.SaveGame(_userId);
         }
     }
 }

@@ -38,5 +38,12 @@ namespace CardGame.Views
         {
             this.Close();
         }
+
+        private void LoadGame(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Game game = new Game(_userId);
+            game.Show();
+        }
     }
 }
