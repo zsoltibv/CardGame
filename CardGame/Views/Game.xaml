@@ -9,8 +9,18 @@
     <Window.DataContext>
         <local:GameController/>
     </Window.DataContext>
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ItemsControl ItemsSource="{Binding ButtonItems}" x:Name="gameGrid">
+    <Grid>
+        <Menu>
+            <MenuItem Header="Options">
+                <MenuItem Header="Standard"/>
+                <MenuItem Header="Custom" Click="CustomBoard"/>
+                <Separator/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="About">
+            </MenuItem>
+        </Menu>
+        <ItemsControl ItemsSource="{Binding ButtonItems}" x:Name="gameGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <ItemsControl ItemsSource="{Binding}">

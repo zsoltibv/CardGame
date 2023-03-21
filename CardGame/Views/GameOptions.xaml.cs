@@ -33,5 +33,10 @@ namespace CardGame.Views
             Game game = new Game(_userId);
             game.Show();
         }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

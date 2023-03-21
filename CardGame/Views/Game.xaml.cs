@@ -37,15 +37,25 @@ namespace CardGame.Views
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             var buttonItem = (ButtonItem)((Button)sender).DataContext;
-            int row = buttonItem.Row;
-            int col = buttonItem.Column;
-            _gameController.FlipItem(row, col, gameGrid);
+            _gameController.FlipItem(buttonItem, gameGrid);
 
             if (_gameController.CheckWin())
             {
                 MessageBox.Show("You won.");
                 return;
             }
+        }
+
+        private void CustomBoard(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("hello");
+            _gameController = new GameController
+            {
+                NrOfRows = 10,
+                NrOfCols = 10,
+            };
+            gameGrid.ItemsSource = _gameController.ButtonItems;
+            gameGrid.Items.Refresh();
         }
     }
 }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace CardGame.Controllers
 {
@@ -19,43 +19,21 @@ namespace CardGame.Controllers
     {
         private const string _imagePathFormat = "../Assets/CardPics/100-animal-flashcards-PACK-1-{0}.png";
         public ObservableCollection<List<ButtonItem>> ButtonItems { get; set; }
-        private int NrOfRows { get; set; } = 4;
-        private int NrOfCols { get; set; } = 4;
+        public int NrOfRows { get; set; } = 4;
+        public int NrOfCols { get; set; } = 4;
         List<ButtonItem> FlippedButtons { get; set; }
-
         private int _flippedCount = 0;
 
         public GameController()
         {
             ButtonItems = new ObservableCollection<List<ButtonItem>>();
             FlippedButtons = new List<ButtonItem> { };
-            Random rand = new Random();
 
-            for (int i = 0; i < NrOfRows; i++)
-            {
-                List<ButtonItem> button = new List<ButtonItem>();
-                for (int j = 0; j < NrOfCols / 2; j++)
-                {
-                    int number = rand.Next(1, 100);
-                    button.Add(new ButtonItem
-                    {
-                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Row = i,
-                        Column = j * 2,
-                    });
-                    button.Add(new ButtonItem
-                    {
-                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Row = i,
-                        Column = j * 2 + 1,
-                    });
-                }
-                ButtonItems.Add(button);
-            }
-            ShuffleGrid();
+            LoadBoard();
+            ShuffleBoard();
         }
 
-        public void ShuffleGrid()
+        public void ShuffleBoard()
         {
             //Fisher - Yates shuffle algorithm
             List<ButtonItem> flatArr = new List<ButtonItem>();
@@ -86,14 +64,14 @@ namespace CardGame.Controllers
             }
         }
 
-        public async void FlipItem(int row, int col, ItemsControl gameGrid)
+        public async void FlipItem(ButtonItem buttonItem, ItemsControl gameGrid)
         {
             if (_flippedCount < 2)
             {
-                ButtonItems[row][col].Visibility = "Visible";
+                buttonItem.Visibility = "Visible";
                 gameGrid.Items.Refresh();
 
-                FlippedButtons.Add(ButtonItems[row][col]);
+                FlippedButtons.Add(buttonItem);
             }
             _flippedCount++;
 
@@ -129,6 +107,32 @@ namespace CardGame.Controllers
                 }
             }
             return true;
+        }
+
+        public void LoadBoard()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < NrOfRows; i++)
+            {
+                List<ButtonItem> button = new List<ButtonItem>();
+                for (int j = 0; j < NrOfCols / 2; j++)
+                {
+                    int number = rand.Next(1, 107);
+                    button.Add(new ButtonItem
+                    {
+                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Row = i,
+                        Column = j * 2,
+                    });
+                    button.Add(new ButtonItem
+                    {
+                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                        Row = i,
+                        Column = j * 2 + 1,
+                    });
+                }
+                ButtonItems.Add(button);
+            }
         }
     }
 }
