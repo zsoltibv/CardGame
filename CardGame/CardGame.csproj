@@ -98,12 +98,19 @@
     <Compile Include="Views\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ChangeBoard.xaml.cs">
+      <DependentUpon>ChangeBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameOptions.xaml.cs">
       <DependentUpon>GameOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn.xaml.cs">
       <DependentUpon>SignIn.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\ChangeBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Game.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

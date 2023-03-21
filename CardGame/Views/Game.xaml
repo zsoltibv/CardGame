@@ -11,11 +11,12 @@
     </Window.DataContext>
     <Grid>
         <Menu>
-            <MenuItem Header="Options">
-                <MenuItem Header="Standard"/>
-                <MenuItem Header="Custom" Click="CustomBoard"/>
-                <Separator/>
-                <MenuItem Header="Exit"/>
+            <MenuItem Header="Game">
+                <MenuItem Header="Save Game" Click="SaveGame"/>
+            </MenuItem>
+            <MenuItem Header="Board Size">
+                <MenuItem Header="Standard(4x4)" Click="ChangeBoardSizeToStandard"/>
+                <MenuItem Header="Custom" Click="ChangeBoardSize"/>
             </MenuItem>
             <MenuItem Header="About">
             </MenuItem>

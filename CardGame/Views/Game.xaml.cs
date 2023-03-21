@@ -46,16 +46,36 @@ namespace CardGame.Views
             }
         }
 
-        private void CustomBoard(object sender, RoutedEventArgs e)
+        private void ChangeBoardSize(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("hello");
-            _gameController = new GameController
+            ChangeBoard changeBoard = new ChangeBoard();
+            bool? result = changeBoard.ShowDialog();
+
+            if (result == true && changeBoard.GetRowCount()* changeBoard.GetColCount()%2==0)
             {
-                NrOfRows = 10,
-                NrOfCols = 10,
-            };
-            gameGrid.ItemsSource = _gameController.ButtonItems;
-            gameGrid.Items.Refresh();
+                _gameController.NrOfRows = changeBoard.GetRowCount();
+                _gameController.NrOfCols = changeBoard.GetColCount();
+                _gameController.LoadBoard();
+                _gameController.ShuffleBoard();
+            }
+            else
+            {
+                MessageBox.Show("Loading board not possible. Nr of tiles is uneven.");
+                return;
+            }
+        }
+
+        private void ChangeBoardSizeToStandard(object sender, RoutedEventArgs e)
+        {
+            _gameController.NrOfRows = 4;
+            _gameController.NrOfCols = 4;
+            _gameController.LoadBoard();
+            _gameController.ShuffleBoard();
+        }
+
+        private void SaveGame(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

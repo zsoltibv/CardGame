@@ -59,7 +59,7 @@ namespace CardGame.Controllers
             {
                 for (int j = 0; j < NrOfCols; j++)
                 {
-                    ButtonItems[i][j] = new ButtonItem(flatArr[i * NrOfRows + j], i, j);
+                    ButtonItems[i][j] = new ButtonItem(flatArr[i * NrOfCols + j], i, j);
                 }
             }
         }
@@ -111,25 +111,33 @@ namespace CardGame.Controllers
 
         public void LoadBoard()
         {
+            ButtonItems.Clear();
+
             Random rand = new Random();
             for (int i = 0; i < NrOfRows; i++)
             {
                 List<ButtonItem> button = new List<ButtonItem>();
-                for (int j = 0; j < NrOfCols / 2; j++)
+                for (int j = 0; j < NrOfCols; j++)
                 {
                     int number = rand.Next(1, 107);
-                    button.Add(new ButtonItem
+                    if (j % 2 == 0)
                     {
-                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Row = i,
-                        Column = j * 2,
-                    });
-                    button.Add(new ButtonItem
+                        button.Add(new ButtonItem
+                        {
+                            ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                            Row = i,
+                            Column = j * 2,
+                        });
+                    }
+                    else
                     {
-                        ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
-                        Row = i,
-                        Column = j * 2 + 1,
-                    });
+                        button.Add(new ButtonItem
+                        {
+                            ImageSource = string.Format(_imagePathFormat, number.ToString("D3")),
+                            Row = i,
+                            Column = j * 2 + 1,
+                        });
+                    }
                 }
                 ButtonItems.Add(button);
             }

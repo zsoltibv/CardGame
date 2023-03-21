@@ -7,6 +7,7 @@ using System.Windows.Documents;
 using CardGame.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace CardGame.Controllers
 {
@@ -48,6 +49,12 @@ namespace CardGame.Controllers
 
         public string GetNextImage(int id)
         {
+            if (AllUsers.Count == 0)
+            {
+                MessageBox.Show("No player exists.");
+                return GetCurrentImage(1);
+            }
+
             if (AllUsers[id].ProfilePicNr == 6)
             {
                 AllUsers[id].ProfilePicNr = 1;
@@ -62,6 +69,12 @@ namespace CardGame.Controllers
 
         public string GetPreviousImage(int id)
         {
+            if (AllUsers.Count == 0)
+            {
+                MessageBox.Show("No player exists.");
+                return GetCurrentImage(1);
+            }
+
             if (AllUsers[id].ProfilePicNr == 1)
             {
                 AllUsers[id].ProfilePicNr = 6;

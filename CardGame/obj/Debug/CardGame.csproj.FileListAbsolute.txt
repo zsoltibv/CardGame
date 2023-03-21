@@ -108,3 +108,5 @@ F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.csproj.Core
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.csproj.CopyComplete
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.exe
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.pdb
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\ChangeBoard.g.cs
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\ChangeBoard.baml

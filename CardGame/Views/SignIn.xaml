@@ -11,7 +11,7 @@
     </Window.DataContext>
     <Grid>
         <Label Content="Memory Card Game" HorizontalAlignment="Center" Margin="0,33,0,0" VerticalAlignment="Top" Width="145"/>
-        <ListView ItemsSource="{Binding AllUsers}" Margin="56,82,321,159" SelectionChanged="ListView_SelectionChanged">
+        <ListView ItemsSource="{Binding AllUsers}" x:Name="userList"  Margin="56,82,321,159" SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
