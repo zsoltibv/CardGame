@@ -25,12 +25,16 @@ namespace CardGame.Views
         private int _userId;
         private GameController _gameController;
 
-        public Game(int id)
+        public Game(int id, bool loadSavedGame)
         {
             _userId = id;
             InitializeComponent();
 
             _gameController = new GameController();
+            if (loadSavedGame)
+            {
+                _gameController.LoadSavedGame(_userId);
+            }
             DataContext = _gameController;
         }
 

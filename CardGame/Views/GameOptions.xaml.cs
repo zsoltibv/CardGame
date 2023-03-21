@@ -30,7 +30,7 @@ namespace CardGame.Views
         private void NewGame(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            Game game = new Game(_userId);
+            Game game = new Game(_userId, false);
             game.Show();
         }
 
@@ -42,7 +42,7 @@ namespace CardGame.Views
         private void LoadGame(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            Game game = new Game(_userId);
+            Game game = new Game(_userId, true);
             game.Show();
         }
     }
