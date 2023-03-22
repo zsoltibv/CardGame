@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -25,6 +26,7 @@ namespace CardGame.Controllers
         public int NrOfCols { get; set; } = 4;
         List<ButtonItem> FlippedButtons { get; set; }
         private int _flippedCount = 0;
+        public int UserId { get; set; }
 
         public GameController()
         {
@@ -146,9 +148,9 @@ namespace CardGame.Controllers
             }
         }
 
-        public void SaveGame(int userId)
+        public void SaveGame()
         {
-            string saveFile = "../../Data/GameSaves/user" + userId.ToString() + ".json";
+            string saveFile = "../../Data/GameSaves/user" + UserId.ToString() + ".json";
             SaveToFile(saveFile);
         }
 
@@ -158,9 +160,9 @@ namespace CardGame.Controllers
             File.WriteAllText(file, json);
         }
 
-        public void LoadSavedGame(int userId)
+        public void LoadSavedGame()
         {
-            string saveFile = "../../Data/GameSaves/user" + userId.ToString() + ".json";
+            string saveFile = "../../Data/GameSaves/user" + UserId.ToString() + ".json";
             string jsonString = File.ReadAllText(saveFile);
             ButtonItems = JsonSerializer.Deserialize<ObservableCollection<List<ButtonItem>>>(jsonString);
         }

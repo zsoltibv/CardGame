@@ -47,6 +47,30 @@ namespace CardGame.Controllers
             return AllUsers[id];
         }
 
+        public void IncreaseLevel(int id)
+        {
+            AllUsers[id].CurrentLvl++;
+            SaveToFile();
+        }
+
+        public void IncreaseGamesPlayed(int id)
+        {
+            AllUsers[id].GamesPlayed++;
+            SaveToFile();
+        }
+
+        public void IncreaseGamesWon(int id)
+        {
+            AllUsers[id].GamesWon++;
+            SaveToFile();
+        }
+
+        public void ResetLevel(int id)
+        {
+            AllUsers[id].CurrentLvl = 0;
+            SaveToFile();
+        }
+
         public string GetNextImage(int id)
         {
             if (AllUsers.Count == 0)

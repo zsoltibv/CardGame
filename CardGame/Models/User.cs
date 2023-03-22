@@ -14,12 +14,18 @@ namespace CardGame.Models
         public int Id { get; private set; }
         public string Name { get; set; }
         public int ProfilePicNr {  get; set; }
+        public int CurrentLvl { get; set; }
+        public int GamesWon { get; set; }
+        public int GamesPlayed { get; set; }
 
         public User(string name)
         {
             Id = Interlocked.Increment(ref _idCounter);
             Name = name;
             ProfilePicNr = 1;
+            GamesPlayed = 0;
+            GamesWon = 0;
+            CurrentLvl = 1;
         }
     }
 }

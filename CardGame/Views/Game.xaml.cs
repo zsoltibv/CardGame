@@ -3,6 +3,7 @@ using CardGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,18 +25,27 @@ namespace CardGame.Views
     {
         private int _userId;
         private GameController _gameController;
+        private UserController _userController;
 
         public Game(int id, bool loadSavedGame)
         {
             _userId = id;
             InitializeComponent();
 
-            _gameController = new GameController();
+            _gameController = new GameController
+            {
+                UserId = id
+            };
+
             if (loadSavedGame)
             {
-                _gameController.LoadSavedGame(_userId);
+                _gameController.LoadSavedGame();
             }
             DataContext = _gameController;
+
+            //set user info
+            _userController = new UserController();
+            SetUserInfo();
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
@@ -45,7 +55,18 @@ namespace CardGame.Views
 
             if (_gameController.CheckWin())
             {
-                MessageBox.Show("You won.");
+                _userController.IncreaseLevel(_userId);
+                _gameController.LoadBoard();
+                _gameController.ShuffleBoard();
+                SetUserInfo();
+                if(_userController.GetUser(_userId).CurrentLvl >= 3)
+                {
+                    MessageBox.Show("You won the game!");
+                    _userController.IncreaseGamesPlayed(_userId);
+                    _userController.IncreaseGamesWon(_userId);
+                    _userController.ResetLevel(_userId);
+                    SetUserInfo();
+                }
                 return;
             }
         }
@@ -79,7 +100,35 @@ namespace CardGame.Views
 
         private void SaveGame(object sender, RoutedEventArgs e)
         {
-            _gameController.SaveGame(_userId);
+            _gameController.SaveGame();
+        }
+
+        private void NewGame(object sender, RoutedEventArgs e)
+        {
+            _gameController = new GameController
+            {
+                UserId = _userId
+            };
+            DataContext = _gameController;
+
+            _userController.ResetLevel(_userId);
+            SetUserInfo();
+        }
+
+        private void SetUserInfo()
+        {
+            User currentUser = _userController.GetUser(_userId);
+            playerName.Content = "Name: " + currentUser.Name;
+            playerLvl.Content = "Level: " + currentUser.CurrentLvl;
+            playerPic.Source = new BitmapImage(new Uri(_userController.GetCurrentImage(_userId),
+                UriKind.Relative));
+        }
+
+        private void MainMenu(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            GameOptions gameOptions = new GameOptions(_userId);
+            gameOptions.Show();
         }
     }
 }

@@ -12,7 +12,10 @@
     <Grid>
         <Menu>
             <MenuItem Header="Game">
+                <MenuItem Header="New Game" Click="NewGame"/>
                 <MenuItem Header="Save Game" Click="SaveGame"/>
+                <Separator/>
+                <MenuItem Header="Back to Main Menu" Click="MainMenu"/>
             </MenuItem>
             <MenuItem Header="Board Size">
                 <MenuItem Header="Standard(4x4)" Click="ChangeBoardSizeToStandard"/>
@@ -49,5 +52,8 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Image x:Name="playerPic"  HorizontalAlignment="Left" Height="78" Margin="25,43,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label x:Name="playerName" Content="Name:&#xD;&#xA;" Margin="25,128,540,116"/>
+        <Label x:Name="playerLvl" Content="Level:" Margin="25,145,545,116"/>
     </Grid>
 </Window>
