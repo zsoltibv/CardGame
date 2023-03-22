@@ -45,5 +45,11 @@ namespace CardGame.Views
             Game game = new Game(_userId, true);
             game.Show();
         }
+
+        private void LoadStatistics(object sender, RoutedEventArgs e)
+        {
+            Statistics stats = new Statistics(_userId);
+            stats.Show();
+        }
     }
 }

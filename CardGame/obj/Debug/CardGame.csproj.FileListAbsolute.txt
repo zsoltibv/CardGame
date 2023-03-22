@@ -110,3 +110,5 @@ F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.exe
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\CardGame.pdb
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\ChangeBoard.g.cs
 F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\ChangeBoard.baml
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\Statistics.g.cs
+F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\Views\Statistics.baml
