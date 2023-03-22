@@ -27,12 +27,12 @@ namespace CardGame.Views
 
         public int GetRowCount()
         {
-            return Convert.ToInt32(rowCount.Text);
+            return int.Parse(rowCount.Text);
         }
 
         public int GetColCount()
         {
-            return Convert.ToInt32(colCount.Text);
+            return int.Parse(colCount.Text);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

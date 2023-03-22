@@ -34,7 +34,7 @@ namespace CardGame.Views
 
             _gameController = new GameController
             {
-                UserId = id
+                UserId = id,
             };
 
             if (loadSavedGame)
@@ -129,6 +129,12 @@ namespace CardGame.Views
             this.Hide();
             GameOptions gameOptions = new GameOptions(_userId);
             gameOptions.Show();
+        }
+
+        private void LoadStatistics(object sender, RoutedEventArgs e)
+        {
+            Statistics stats = new Statistics(_userId);
+            stats.Show();
         }
     }
 }

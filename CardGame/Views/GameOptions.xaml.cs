@@ -51,5 +51,12 @@ namespace CardGame.Views
             Statistics stats = new Statistics(_userId);
             stats.Show();
         }
+
+        private void ChangeUser(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            SignIn signIn = new SignIn();
+            signIn.Show();
+        }
     }
 }

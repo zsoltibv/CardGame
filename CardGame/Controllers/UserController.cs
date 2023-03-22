@@ -19,8 +19,12 @@ namespace CardGame.Controllers
 
         public UserController()
         {
-            string jsonString = File.ReadAllText(_usersFilePath);
-            if (jsonString == "")
+            string jsonString;
+            if (File.Exists(_usersFilePath))
+            {
+                jsonString = File.ReadAllText(_usersFilePath);
+            }
+            else
             {
                 File.WriteAllText(_usersFilePath, "[]");
                 jsonString = File.ReadAllText(_usersFilePath);
@@ -40,6 +44,14 @@ namespace CardGame.Controllers
         {
             AllUsers.RemoveAt(id);
             SaveToFile();
+
+            //delete saved games file
+            string file = "../../Data/GameSaves/user" + id.ToString() + ".json";
+            if (File.Exists(file))
+            {
+                File.Delete(file);
+                Console.WriteLine("File deleted successfully.");
+            }
         }
 
         public User GetUser(int id)
