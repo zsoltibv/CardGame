@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CardGame.Controllers;
+using CardGame.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +28,7 @@ namespace CardGame.Views
         {
             _userId = id;
             InitializeComponent();
+            loadGameButton.IsEnabled = (File.Exists("../../Data/GameSaves/user" + _userId.ToString() + ".json"));
         }
 
         private void NewGame(object sender, RoutedEventArgs e)

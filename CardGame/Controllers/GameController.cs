@@ -103,9 +103,9 @@ namespace CardGame.Controllers
         public bool CheckWin()
         {
             Console.WriteLine("i: " + NrOfRows.ToString() + "j: " + NrOfCols.ToString());
-            for(int i = 0; i < NrOfRows; i++)
+            for (int i = 0; i < NrOfRows; i++)
             {
-                for(int j = 0; j< NrOfCols; j++)
+                for (int j = 0; j < NrOfCols; j++)
                 {
                     if (ButtonItems[i][j].Visibility == "Hidden")
                         return false;
@@ -164,10 +164,13 @@ namespace CardGame.Controllers
         public void LoadSavedGame()
         {
             string saveFile = "../../Data/GameSaves/user" + UserId.ToString() + ".json";
-            string jsonString = File.ReadAllText(saveFile);
-            ButtonItems = JsonSerializer.Deserialize<ObservableCollection<List<ButtonItem>>>(jsonString);
-            NrOfRows = ButtonItems.Count;
-            NrOfCols = ButtonItems[0].Count;
+            if (File.Exists(saveFile))
+            {
+                string jsonString = File.ReadAllText(saveFile);
+                ButtonItems = JsonSerializer.Deserialize<ObservableCollection<List<ButtonItem>>>(jsonString);
+                NrOfRows = ButtonItems.Count;
+                NrOfCols = ButtonItems[0].Count;
+            }
         }
     }
 }
