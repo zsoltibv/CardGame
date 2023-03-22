@@ -102,7 +102,6 @@ namespace CardGame.Controllers
 
         public bool CheckWin()
         {
-            Console.WriteLine("i: " + NrOfRows.ToString() + "j: " + NrOfCols.ToString());
             for (int i = 0; i < NrOfRows; i++)
             {
                 for (int j = 0; j < NrOfCols; j++)

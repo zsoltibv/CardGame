@@ -26,12 +26,18 @@ namespace CardGame.Views
         private int _userId;
         private GameController _gameController;
         private UserController _userController;
+        private TimeMeasure _timer;
 
         public Game(int id, bool loadSavedGame)
         {
             _userId = id;
             InitializeComponent();
 
+            //set user info
+            _userController = new UserController();
+            SetUserInfo();
+
+            //set game info
             _gameController = new GameController
             {
                 UserId = id,
@@ -40,12 +46,15 @@ namespace CardGame.Views
             if (loadSavedGame)
             {
                 _gameController.LoadSavedGame();
+                _timer = new TimeMeasure(_userController.GetTimer(id));
+                StartTimer();
+            }
+            else
+            {
+                _timer = new TimeMeasure(3);
+                StartTimer();
             }
             DataContext = _gameController;
-
-            //set user info
-            _userController = new UserController();
-            SetUserInfo();
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
@@ -100,6 +109,10 @@ namespace CardGame.Views
 
         private void SaveGame(object sender, RoutedEventArgs e)
         {
+            _timer.Stop();
+            _userController.GetUser(_userId).Timer = _timer;
+            _userController.SaveToFile();
+
             _gameController.SaveGame();
         }
 
@@ -135,6 +148,19 @@ namespace CardGame.Views
         {
             Statistics stats = new Statistics(_userId);
             stats.Show();
+        }
+
+        public async void StartTimer()
+        {
+            _timer.Start();
+            playerTimer.Content = ("Remaining time: \n" + _timer.RemainingTime.ToString(@"mm\:ss"));
+
+            while (_timer.RemainingTime.TotalSeconds > 0)
+            {
+                playerTimer.Content = ("Remaining time: \n" + _timer.RemainingTime.ToString(@"mm\:ss"));
+                await Task.Delay(1000);
+            }
+            _timer.Stop();
         }
     }
 }

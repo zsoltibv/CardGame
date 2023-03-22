@@ -56,5 +56,6 @@
         <Image x:Name="playerPic"  HorizontalAlignment="Left" Height="78" Margin="10,27,0,0" VerticalAlignment="Top" Width="76"/>
         <Label x:Name="playerName" Content="Name:&#xD;&#xA;" Margin="10,110,661,293"/>
         <Label x:Name="playerLvl" Content="Level:" Margin="10,141,661,267"/>
+        <Label x:Name="playerTimer" Content="Time left:" Margin="10,173,661,235"/>
     </Grid>
 </Window>

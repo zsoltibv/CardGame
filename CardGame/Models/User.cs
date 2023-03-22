@@ -17,6 +17,7 @@ namespace CardGame.Models
         public int CurrentLvl { get; set; }
         public int GamesWon { get; set; }
         public int GamesPlayed { get; set; }
+        public TimeMeasure Timer { get;set; }
 
         public User(string name)
         {
@@ -26,6 +27,7 @@ namespace CardGame.Models
             GamesPlayed = 0;
             GamesWon = 0;
             CurrentLvl = 1;
+            Timer = new TimeMeasure(5);
         }
     }
 }
