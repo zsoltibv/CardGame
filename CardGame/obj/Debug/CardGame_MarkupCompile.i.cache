@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\obj\Debug\
+C:\Users\zsolti\Desktop\Facultate\An2\Semestrul2\MVP\Teme\CardGame\CardGame\obj\Debug\
 CardGame
 none
 false
 DEBUG;TRACE
-F:\Facultate\An2\Semestrul2\MVP\CardGame\CardGame\App.xaml
-6-1795707275
+C:\Users\zsolti\Desktop\Facultate\An2\Semestrul2\MVP\Teme\CardGame\CardGame\App.xaml
+7-555328386
 
-162028151747
-26564786710
-Views\ChangeBoard.xaml;Views\Game.xaml;Views\AddUser.xaml;Views\GameOptions.xaml;Views\SignIn.xaml;Views\Statistics.xaml;
+17-1159502038
+261750420746
+Views\About.xaml;Views\ChangeBoard.xaml;Views\Game.xaml;Views\AddUser.xaml;Views\GameOptions.xaml;Views\SignIn.xaml;Views\Statistics.xaml;
 
-False
+True
 

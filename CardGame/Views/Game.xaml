@@ -14,6 +14,7 @@
             <MenuItem Header="Game">
                 <MenuItem Header="New Game" Click="NewGame"/>
                 <MenuItem Header="Save Game" Click="SaveGame"/>
+                <MenuItem Header="Load Game" Click="LoadGame"/>
                 <Separator/>
                 <MenuItem Header="Back to Main Menu" Click="MainMenu"/>
             </MenuItem>
@@ -22,7 +23,7 @@
                 <MenuItem Header="Custom" Click="ChangeBoardSize"/>
             </MenuItem>
             <MenuItem Header="Statistics" Click="LoadStatistics"/>
-            <MenuItem Header="About">
+            <MenuItem Header="About" Click="LoadAbout">
             </MenuItem>
         </Menu>
         <ItemsControl ItemsSource="{Binding ButtonItems}" x:Name="gameGrid" HorizontalAlignment="Center" VerticalAlignment="Center">

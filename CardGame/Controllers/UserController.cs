@@ -59,9 +59,9 @@ namespace CardGame.Controllers
             return AllUsers[id];
         }
 
-        public TimeMeasure GetTimer(int id)
+        public int GetTime(int id)
         {
-            return AllUsers[id].Timer;
+            return AllUsers[id].RemainingSeconds;
         }
 
         public void IncreaseLevel(int id)

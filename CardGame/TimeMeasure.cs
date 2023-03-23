@@ -11,20 +11,16 @@ namespace CardGame
     {
         public Stopwatch Stopwatch { get; set; }
         public int TotalTimeInSeconds { get; set; }
+        public int RemainingTimeInSeconds { get; set; }
 
         public TimeMeasure()
         {
         }
 
-        public TimeMeasure(int totalTimeMinutes)
+        public TimeMeasure(int seconds)
         {
-            TotalTimeInSeconds = totalTimeMinutes * 60;
+            TotalTimeInSeconds = seconds;
             Stopwatch = new Stopwatch();
-        }
-
-        public TimeMeasure(TimeMeasure t) {
-            TotalTimeInSeconds = t.TotalTimeInSeconds;
-            Stopwatch = t.Stopwatch;
         }
 
         public void Start()
@@ -41,8 +37,8 @@ namespace CardGame
         {
             get
             {
-                int remainingTimeSeconds = TotalTimeInSeconds - (int)Stopwatch.Elapsed.TotalSeconds;
-                return TimeSpan.FromSeconds(remainingTimeSeconds);
+                RemainingTimeInSeconds = TotalTimeInSeconds - (int)Stopwatch.Elapsed.TotalSeconds;
+                return TimeSpan.FromSeconds(RemainingTimeInSeconds);
             }
         }
     }

@@ -27,6 +27,7 @@ namespace CardGame.Views
         private GameController _gameController;
         private UserController _userController;
         private TimeMeasure _timer;
+        const int _timerSeconds = 180;
 
         public Game(int id, bool loadSavedGame)
         {
@@ -46,12 +47,12 @@ namespace CardGame.Views
             if (loadSavedGame)
             {
                 _gameController.LoadSavedGame();
-                _timer = new TimeMeasure(_userController.GetTimer(id));
+                _timer = new TimeMeasure(_userController.GetTime(id));
                 StartTimer();
             }
             else
             {
-                _timer = new TimeMeasure(3);
+                _timer = new TimeMeasure(_timerSeconds);
                 StartTimer();
             }
             DataContext = _gameController;
@@ -62,21 +63,31 @@ namespace CardGame.Views
             var buttonItem = (ButtonItem)((Button)sender).DataContext;
             _gameController.FlipItem(buttonItem, gameGrid);
 
-            if (_gameController.CheckWin())
+            if (_timer.RemainingTime.TotalSeconds > 0)
             {
-                _userController.IncreaseLevel(_userId);
-                _gameController.LoadBoard();
-                _gameController.ShuffleBoard();
-                SetUserInfo();
-                if(_userController.GetUser(_userId).CurrentLvl >= 3)
+                if (_gameController.CheckWin())
                 {
-                    MessageBox.Show("You won the game!");
-                    _userController.IncreaseGamesPlayed(_userId);
-                    _userController.IncreaseGamesWon(_userId);
-                    _userController.ResetLevel(_userId);
+                    _userController.IncreaseLevel(_userId);
+                    _gameController.LoadBoard();
+                    _gameController.ShuffleBoard();
                     SetUserInfo();
+                    if (_userController.GetUser(_userId).CurrentLvl >= 3)
+                    {
+                        _timer.Stop();
+                        MessageBox.Show("You won the game!");
+                        _userController.IncreaseGamesPlayed(_userId);
+                        _userController.IncreaseGamesWon(_userId);
+                        _userController.ResetLevel(_userId);
+                        SetUserInfo();
+                    }
                 }
-                return;
+            }
+
+            else
+            {
+                _userController.IncreaseGamesPlayed(_userId);
+                _userController.ResetLevel(_userId);
+                SetUserInfo();
             }
         }
 
@@ -110,7 +121,7 @@ namespace CardGame.Views
         private void SaveGame(object sender, RoutedEventArgs e)
         {
             _timer.Stop();
-            _userController.GetUser(_userId).Timer = _timer;
+            _userController.GetUser(_userId).RemainingSeconds = _timer.RemainingTimeInSeconds;
             _userController.SaveToFile();
 
             _gameController.SaveGame();
@@ -126,6 +137,17 @@ namespace CardGame.Views
 
             _userController.ResetLevel(_userId);
             SetUserInfo();
+
+            //reset timer
+            _timer = new TimeMeasure(_timerSeconds);
+            StartTimer();
+        }
+
+        private void LoadGame(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            Game game = new Game(_userId, true);
+            game.ShowDialog();
         }
 
         private void SetUserInfo()
@@ -161,6 +183,14 @@ namespace CardGame.Views
                 await Task.Delay(1000);
             }
             _timer.Stop();
+            playerTimer.Content = ("Remaining time: \n" + _timer.RemainingTime.ToString(@"mm\:ss"));
+            MessageBox.Show("Time Expired!");
+        }
+
+        private void LoadAbout(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
     }
 }
